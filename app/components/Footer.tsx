@@ -4,17 +4,17 @@ function Footer() {
   return (
     <footer className="bg-black text-white py-12 px-8">
       <div className="max-w-7xl mx-auto">
-        {/* Logo */}
+      
         <img className="h-9 w-15 mb-8" src="images/uber-logo.png" alt="Uber" />
 
-        {/* Visit Help Center */}
+    
         <a href="#" className="text-base hover:text-gray-300 mb-12 inline-block">
           Visit Help Center
         </a>
 
-        {/* Footer Links Grid */}
+    
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-16 mt-12">
-          {/* Company */}
+         
           <div>
             <h3 className="font-semibold text-lg mb-6">Company</h3>
             <ul className="space-y-4 text-sm text-gray-300">
@@ -27,7 +27,7 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Products */}
+         
           <div>
             <h3 className="font-semibold text-lg mb-6">Products</h3>
             <ul className="space-y-4 text-sm text-gray-300">
@@ -40,7 +40,7 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Global citizenship */}
+         
           <div>
             <h3 className="font-semibold text-lg mb-6">Global citizenship</h3>
             <ul className="space-y-4 text-sm text-gray-300">
@@ -49,7 +49,7 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Travel */}
+         
           <div>
             <h3 className="font-semibold text-lg mb-6">Travel</h3>
             <ul className="space-y-4 text-sm text-gray-300">
@@ -60,7 +60,7 @@ function Footer() {
           </div>
         </div>
 
-        {/* Social Icons */}
+       
         <div className="flex gap-6 mb-12 pb-8 border-b border-gray-800">
           
           <FaLinkedinIn />
