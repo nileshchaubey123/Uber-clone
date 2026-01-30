@@ -1,7 +1,14 @@
+"use client"
 import { MapPin, Clock3, ChevronDown, Navigation } from 'lucide-react';
 import { FaChevronDown } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
+import { FaLocationDot ,FaCircleDot} from "react-icons/fa6";
+import { FaCheckSquare } from "react-icons/fa";
+import { useRef, useState } from 'react';
+
 function HeroSection(){
+   const pick = useRef<HTMLInputElement | null>(null);
+   const drop = useRef<HTMLInputElement | null>(null); 
+   const [open,setOpen]=useState(false);
   return (
     <>
       <div className="w-full flex justify-center items-start gap-20 p-15 flex-wrap">
@@ -15,16 +22,42 @@ function HeroSection(){
             </div>
             </div>
                 <div className="text-[52px] font-bold leading-[1.05] w-[400px]">Go anywhere with Uber</div>
-            <div className=" h-[48px] w-[174px] flex p-4 rounded-3xl bg-[#EFEFEF] px-[14px] py-[16px] items-center">
+            <div className=" h-[48px] w-[174px] flex p-4 rounded-3xl bg-[#EFEFEF] px-[14px] py-[16px] items-center hover:bg-neutral-200 transition-colors">
                  <Clock3 />
-                 <div className="ml-2">Pickup now</div>
+                 <button 
+                 onClick={()=>setOpen(true)}
+                 className="ml-2 font-bold">Pickup now</button>
                  <FaChevronDown className="ml-2" />
             </div>
-            <div className="w-[348px] h-[56px] bg-[#EFEFEF] rounded flex justify-content items-center px-4">
-                <p>Pickup Location</p>
+            <div 
+            onClick={() => pick.current?.focus()}
+            className="w-[348px] h-[56px] bg-[#EFEFEF] rounded flex justify-content items-center px-4 gap-2
+              cursor-text
+               border-2 border-transparent
+              focus-within:border-black
+            ">
+                <FaCircleDot/>
+                <input 
+                 ref={pick}
+                className='w-full h-full border-transparent outline-none'
+                type="text" 
+                placeholder='Pickup Location'
+                />
             </div>
-           <div className="w-[348px] h-[56px] bg-[#EFEFEF] rounded flex justify-content items-center px-4">
-                <p>Dropoff Location</p>
+           <div
+           onClick={() => drop.current?.focus()}
+            className="w-[348px] h-[56px] bg-[#EFEFEF] rounded flex justify-content items-center px-4 gap-2
+            cursor-text
+             border-2 border-transparent
+           focus-within:border-black
+           ">
+               <FaCheckSquare/>
+                <input 
+                 ref={drop}
+                className='w-full h-full border-transparent outline-none'
+                type="text" 
+                placeholder='Dropoff Location'
+                />
         </div>
         <div className="flex justify-start items-center gap-3">
             <div className="flex justify-center items-center w-[127.11px] h-[48px] bg-black rounded text-white">
@@ -97,7 +130,57 @@ function HeroSection(){
         </a>
       </div>
     </div> */}
-        {/* <img  className="h-[528px] w-[528px] rounded-md" src="src/components/random.webp" alt="pic" /> */}
+
+
+    {/* popup on clicking pickup */}
+  {open && (
+  <>
+  <div
+      className="fixed inset-0 bg-black/50"
+      onClick={() => setOpen(false)}
+    ></div>
+
+    <div className="fixed inset-0 flex items-center justify-center z-50 ">
+      <div className="bg-white rounded-xl w-[500px] h-[252px] p-6 shadow-xl relative">
+        
+        <button
+          onClick={() => setOpen(false)}
+          className="absolute top-4 right-4 text-xl font-normal"
+        >
+          x
+        </button>
+
+
+        <div>
+          <label className="flex items-center justify-between cursor-pointer my-6">
+            <span className="font-bold">Pickup now</span>
+            <input type="radio" name="pickup" />
+          </label>
+          <hr className="border-neutral-200  w-105 ml-4" />
+
+          <label className="flex items-center justify-between cursor-pointer my-6">
+            <span className="font-bold">Schedule later</span>
+            <input type="radio" name="pickup" />
+          </label>
+          <hr className="border-neutral-200 w-105 ml-4" />
+        </div>
+
+        <div className="flex justify-end gap-4 mt-8">
+          <button
+            onClick={() => setOpen(false)}
+            className="font-bold w-[99px] w-[40px] rounded hover:bg-neutral-200 transition-colors"
+          >
+            Cancel
+          </button>
+          <button className="w-[99px] w-[40px] bg-black text-white px-5 py-2 rounded-lg font-bold">
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+  </>
+)}
+
 <div className="relative w-full max-w-xl">
   <img
     src="images/random.webp"

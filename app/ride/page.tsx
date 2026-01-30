@@ -1,11 +1,16 @@
 "use client";
-import { FaCar,FaKey } from "react-icons/fa6";
+import { FaCar,FaKey,FaCircleDot } from "react-icons/fa6";
+import { FaCheckSquare } from "react-icons/fa";
 import { ImSpoonKnife } from "react-icons/im";
 import { BsFillPersonFill } from "react-icons/bs";
 import Maps from "../components/Maps";
+import Link from "next/link";
+import { useRef } from "react";
 
 
 function Ride(){
+ const pick = useRef<HTMLInputElement | null>(null);
+ const drop = useRef<HTMLInputElement | null>(null); 
   return (
     <>
       <div className="w-full h-screen flex flex-col">
@@ -32,7 +37,7 @@ function Ride(){
            <div className="flex gap-5 items-center">
              <div className="text-black text-[14px] font-bold flex gap-2 items-center">
               <BsFillPersonFill className="w-4 h-4"/>
-              <p className="font-[14px]">Login</p>
+              <Link href="login" className="font-[14px]">Login</Link>
              </div>
         <div className="h-9 w-[74px] flex items-center justify-center bg-black text-white text-sm font-bold rounded-full font-bold font-[14px]">
         Sign up
@@ -48,12 +53,37 @@ function Ride(){
   <h2 className="font-bold text-[20px]">Find a Trip</h2>
 
 
-  <div className="w-full h-12 rounded-lg bg-[#F3F3F3] px-4 flex items-center">
-    <p className="font-semibold text-[14px] text-neutral-700">Pick-up Location</p>
+  <div 
+  onClick={() => pick.current?.focus()}
+  className="w-full h-12 rounded-lg bg-[#F3F3F3] px-4 flex items-center gap-2
+        cursor-text
+        border-2 border-transparent
+        focus-within:border-black
+  ">
+    <FaCircleDot/>
+    <input 
+     ref={pick}
+     type="text"
+     placeholder="Pick-up Location"
+     className="font-semibold text-[14px] text-neutral-700 h-full w-full bg-transparent
+      outline-none" />
   </div>
 
-  <div className="w-full h-12 rounded-lg bg-[#F3F3F3] px-4 flex items-center">
-    <p className="font-semibold text-[14px] text-neutral-700">Drop-off Location</p>
+  <div 
+  onClick={() => drop.current?.focus()}
+  className="w-full h-12 rounded-lg bg-[#F3F3F3] px-4 flex items-center gap-2
+        cursor-text
+        border-2 border-transparent
+        focus-within:border-black
+  ">
+    <FaCheckSquare />
+    <input 
+    ref={drop}
+    type="text"
+    placeholder="Drop-off Location"
+    className="font-semibold text-[14px] text-neutral-700 h-full w-full bg-transparent
+      outline-none"
+     />
   </div>
 
   <div className="w-full h-12 rounded-lg bg-[#F3F3F3] px-4 flex items-center justify-between">

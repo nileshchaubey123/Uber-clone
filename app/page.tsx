@@ -1,4 +1,3 @@
-import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import HeroNiche from "./components/HeroNiche";
 import Manwoman from "./components/Man-woman";
@@ -6,11 +5,12 @@ import Watch from "./components/Watch";
 import Segments from "./components/Segments";
 import Foothead from "./components/foot-head";
 import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="w-full bg-white">
-      <Navbar />
+    <>
+      <Navbar/>
       <HeroSection />
       <HeroNiche/>
       <Manwoman/>
@@ -18,7 +18,7 @@ function App() {
       <Segments/>
       <Foothead/>
       <Footer/>
-    </div>
+    </>
   );
 }
 
